@@ -1,0 +1,5 @@
+Health care improvements,
+1) We can create speciality saperate table and add that foreign key inside healthcare profetionals table
+2) We can create notes column inside appointments table.
+3) we can create command and stubs for service and repository
+4) rate limiting for your API

@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "4e431422-69a6-4adf-9057-c1f2469b0186",
+		"name": "Healthcare Appointment API",
+		"description": "API collection for user authentication and healthcare appointments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28255807"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Mayuri Meghani\",\n  \"email\": \"mayurimeghani@gmail.com\",\n  \"password\": \"123456\",\n  \"password_confirmation\": \"123456\"\n}"
+						},
+						"url": "{{base_url}}/api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}"
+						},
+						"url": "{{base_url}}/api/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Healthcare Professionals",
+			"item": [
+				{
+					"name": "List Professionals",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/professionals"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "Book Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"healthcare_professional_id\": 2,\n  \"appointment_start_time\": \"2025-09-07 10:00:00\",\n  \"appointment_end_time\": \"2025-09-07 11:00:00\"\n}"
+						},
+						"url": "{{base_url}}/api/appointments"
+					},
+					"response": []
+				},
+				{
+					"name": "View User Appointments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/appointments"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "met",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/appointments/1/cancel"
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Appointment Completed (Optional)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/appointments/1/complete"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
